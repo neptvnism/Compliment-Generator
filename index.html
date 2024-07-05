@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliment Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        #compliment {
+            font-size: 2em;
+            margin: 20px 0;
+            min-height: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="compliment"></div>
+        <button onclick="generateCompliment()">Generate Compliment</button>
+    </div>
+
+    <script>
+        const compliments = [
+            "are amazing",
+            "have a great smile",
+            "radiate positivity",
+            "are incredibly talented",
+            "are a fantastic friend",
+            "bring joy to everyone around you",
+            "have a heart of gold",
+            "are a ray of sunshine",
+            "make the world a better place",
+            "inspire everyone around you",
+            "have a wonderful sense of humor",
+            "are so thoughtful",
+            "light up the room",
+            "are a true gem",
+            "have the kindest soul",
+            "are a breath of fresh air",
+            "are wonderfully creative",
+            "have an infectious enthusiasm",
+            "are a natural leader",
+            "make people feel special"
+        ];
+
+        function keySmash(length) {
+            const chars = "abcdefghijklmnopqrstuvwxyz";
+            let result = "";
+            for (let i = 0; i < length; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        function revealWord(word, index, callback) {
+            const element = document.getElementById("compliment");
+            let keySmashingInterval = setInterval(() => {
+                element.textContent = element.textContent.split(' ').slice(0, index).join(' ') + ' ' + keySmash(word.length);
+            }, 100);
+
+            setTimeout(() => {
+                clearInterval(keySmashingInterval);
+                element.textContent = element.textContent.split(' ').slice(0, index).join(' ') + ' ' + word;
+                callback();
+            }, 1000);
+        }
+
+        function generateCompliment() {
+            const base = "You";
+            const compliment = compliments[Math.floor(Math.random() * compliments.length)];
+            const words = [base, ...compliment.split(' ')];
+            let currentIndex = 0;
+            document.getElementById("compliment").textContent = "";
+
+            function revealNextWord() {
+                if (currentIndex < words.length) {
+                    revealWord(words[currentIndex], currentIndex, revealNextWord);
+                    currentIndex++;
+                }
+            }
+
+            revealNextWord();
+        }
+    </script>
+</body>
+</html>
