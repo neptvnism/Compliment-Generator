@@ -1,37 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compliment Generator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-        .container {
-            text-align: center;
-        }
-        #compliment {
-            font-size: 2em;
-            margin: 20px 0;
-            min-height: 50px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div id="compliment">You...</div>
-        <button onclick="generateCompliment()">Generate Compliment</button>
-    </div>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Compliment Generator</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div id="compliment">You...</div>
+            <button onclick="generateCompliment()">Generate Compliment</button>
+        </div>
 
     <script>
         const compliments = [
